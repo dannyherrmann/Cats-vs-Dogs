@@ -1,6 +1,6 @@
 // function for html to display on main that has images and buttons
 
-import { getCats, getDogs, getCatVote, getDogVote } from "./dataAccess.js"
+import { getCats, getDogs, getCatVote, getDogVote, addVote } from "./dataAccess.js"
 
 export const catDog = () => {
     return `
@@ -21,6 +21,20 @@ export const catDog = () => {
 }
 
 const mainContainer = document.querySelector("#container")
+
+
+mainContainer.addEventListener("click", click => {
+
+    let catVote = getCatVote()
+    if (click.target.id === "dogButton") {
+        let dog = getDogVote() + 1
+        const dogVoteValue = { dogVote: dog }
+
+        addVote(dogVoteValue)
+    }
+
+    document.dispatchEvent(new CustomEvent("stateChanged"))
+})
 
 // mainContainer.addEventListener("click", click => {
 //     if (click.target.dispatchEvent.startsWith("dogButton")) {
