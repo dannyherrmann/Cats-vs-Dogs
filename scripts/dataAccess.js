@@ -13,5 +13,15 @@ export const fetchCatAPI = async () => {
 };
 
 export const getCats = () => {
-    return applicationState.cats.map((x) => ({...x}))
+    return applicationState.cats.map((x) => ({ ...x }))
 };
+
+export const fetchDogAPI = async () => {
+    const dataFetch = await fetch(`${dogAPI}`)
+    const jsonData = await dataFetch.json()
+    applicationState.dogs = jsonData
+}
+
+export const getDogs = () => {
+    return applicationState.dogs.map((x) => ({ ...x }))
+}
