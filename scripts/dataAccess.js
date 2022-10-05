@@ -44,5 +44,15 @@ export const getDogVote = () => {
     return applicationState.dogVote
 }
 
-fetchMockDB()
-console.log(`app state:`,applicationState)
+export const addVote = async (vote) => {
+
+    const fetchMethod = {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(vote)
+    }
+
+    const dataFetch = await fetch(`${mockDB}/tally/1`, fetchMethod)
+    const jsonData = dataFetch.json()
+    return jsonData
+}

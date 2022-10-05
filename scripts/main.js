@@ -11,3 +11,8 @@ const render = async () => {
 }
 
 render()
+
+
+document.addEventListener("stateChanged", event => {
+    render()
+})
