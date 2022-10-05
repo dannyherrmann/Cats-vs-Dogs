@@ -1,6 +1,6 @@
 // function for html to display on main that has images and buttons
 
-import { getCats, getDogs } from "./dataAccess.js"
+import { getCats, getDogs, getCatVote, getDogVote } from "./dataAccess.js"
 
 export const catDog = () => {
     return `
@@ -19,6 +19,16 @@ export const catDog = () => {
    
     `
 }
+
+const mainContainer = document.querySelector("#container")
+
+// mainContainer.addEventListener("click", click => {
+//     if (click.target.dispatchEvent.startsWith("dogButton")) {
+
+//     }
+// })
+
+// mockDB, customEvent, addtalley
 
 
 
