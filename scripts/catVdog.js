@@ -25,14 +25,19 @@ const mainContainer = document.querySelector("#container")
 
 mainContainer.addEventListener("click", click => {
 
-    let catVote = getCatVote()
+    
     if (click.target.id === "dogButton") {
         let dog = getDogVote() + 1
-        const dogVoteValue = { dogVote: dog }
+        const newDogVoteValue = { dogVote: dog }
 
-        addVote(dogVoteValue)
+        addVote(newDogVoteValue)
     }
+    else if (click.target.id === "catButton") {
+        let cat = getCatVote() + 1
+        const newCatVoteValue = { catVote: cat }
+        addVote(newCatVoteValue)
 
+    }
     document.dispatchEvent(new CustomEvent("stateChanged"))
 })
 
