@@ -25,10 +25,10 @@ const mainContainer = document.querySelector("#container")
 
 mainContainer.addEventListener("click", click => {
 
-    
+
     if (click.target.id === "dogButton") {
         let dog = getDogVote() + 1
-        const newDogVoteValue = { dogVote: dog }
+        const newDogVoteValue = { dogVote: dog, }
 
         addVote(newDogVoteValue)
     }

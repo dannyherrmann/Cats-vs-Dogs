@@ -2,7 +2,8 @@ const applicationState = {
     cats: [],
     dogs: [],
     catVote: 0,
-    dogVote: 0
+    dogVote: 0,
+    dogObj: []
 };
 
 const catAPI = "https://api.thecatapi.com/v1/images/search"
