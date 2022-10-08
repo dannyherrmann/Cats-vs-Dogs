@@ -1,6 +1,82 @@
-.cat{
-max-width: 100%;
-}
-.dog{
-max-width: 100%
-}
+body{
+    background-color: #222;
+    color: white;
+  }
+  
+  .animals {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin: auto;
+  }
+  
+  .animals--vote {
+    background: #333;
+    padding: 16px;
+    margin: 0 8px;
+    border-radius: 4px;
+    border: 1px solid #111;
+  }
+  
+    .animals--vote img {
+      width: 350px;
+      display: block;
+    }
+  
+    .animals--vote button {
+      border-radius: 8px;
+      background-color: white;
+      margin-top: 12px;
+      padding: 8px 12px;
+    }
+  
+  .feed {
+  
+  }
+  
+  .feed .results {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 16px auto;
+  }
+  
+  .feed .results img {
+    max-width: 200px;
+    display: block;
+  }
+  
+  #catDogGif{
+    display: block;
+    margin: auto;
+  }
+  
+  h1 {
+    display: flex;
+    justify-content: center;
+  }
+  
+  h2 {
+    display: flex;
+    justify-content: center;
+  }
+  
+  
+  .container {
+    display: flex;
+    max-width: 80%;
+    margin: auto;
+  }
+  
+  .main-column {
+    width: 80%;
+    background: red;
+  }
+  
+  .sidebar {
+    width: 20%;
+    background: blue;
+    height: 300px;
+  }
+  
