@@ -56,3 +56,16 @@ export const addVote = async (vote) => {
     const jsonData = dataFetch.json()
     return jsonData
 }
+
+export const addDogVote = async (vote) => {
+
+    const fetchMethod = {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(vote)
+    }
+
+    const dataFetch = await fetch(`${mockDB}/dogs/1/votes`, fetchMethod)
+    const jsonData = dataFetch.json()
+    return jsonData
+}
