@@ -42,6 +42,7 @@ export const catDog = () => {
 const mainContainer = document.querySelector("#container")
 
 mainContainer.addEventListener("click", click => {
+    console.log(click.target.id)
     if (click.target.id === "dogButton") {
         let dog = getDogVote() + 1
         const newDogVoteValue = { dogVote: dog }
@@ -54,5 +55,5 @@ mainContainer.addEventListener("click", click => {
     } else {
         return false
     }
-    document.dispatchEvent(new CustomEvent("stateChanged"))
+    document.querySelector("#container").dispatchEvent(new CustomEvent("stateChanged"))
 })
