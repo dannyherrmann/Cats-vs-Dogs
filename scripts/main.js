@@ -1,5 +1,5 @@
 import { catDog } from "./catVdog.js";
-import { fetchCatAPI, fetchDogAPI, fetchVotes, fetchUsers } from "./dataAccess.js";
+import { fetchCatAPI, fetchDogAPI, fetchVotes, fetchObj, fetchUsers } from "./dataAccess.js";
 import { LoginForm } from "./login.js";
 
 const mainContainer = document.querySelector("#container")
@@ -11,6 +11,7 @@ const render = async () => {
         await fetchCatAPI();
         await fetchDogAPI();
         await fetchVotes();
+        await fetchObj();
         mainContainer.innerHTML = catDog()
     } else {
         mainContainer.innerHTML = LoginForm()
