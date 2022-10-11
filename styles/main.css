@@ -1,82 +1,148 @@
-body{
+body {
     background-color: #222;
     color: white;
-  }
-  
-  .animals {
+}
+
+.animals {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     margin: auto;
-  }
-  
-  .animals--vote {
+}
+
+.animals--vote {
     background: #333;
     padding: 16px;
     margin: 0 8px;
     border-radius: 4px;
     border: 1px solid #111;
-  }
-  
-    .animals--vote img {
-      width: 350px;
-      display: block;
-    }
-  
-    .animals--vote button {
-      border-radius: 8px;
-      background-color: white;
-      margin-top: 12px;
-      padding: 8px 12px;
-    }
-  
-  .feed {
-  
-  }
-  
-  .feed .results {
+}
+
+.animals--vote img {
+    width: 350px;
+    display: block;
+}
+
+.animals--vote button {
+    border-radius: 8px;
+    background-color: white;
+    margin-top: 12px;
+    padding: 8px 12px;
+}
+
+
+.feed .results {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 16px;
     margin: 16px auto;
-  }
-  
-  .feed .results img {
+}
+
+.feed .results img {
     max-width: 200px;
     display: block;
-  }
-  
-  #catDogGif{
+}
+
+#catDogGif {
     display: block;
     margin: auto;
-  }
-  
-  h1 {
+}
+
+h1 {
     display: flex;
     justify-content: center;
-  }
-  
-  h2 {
+}
+
+h2 {
     display: flex;
     justify-content: center;
-  }
-  
-  
-  .container {
+}
+
+
+.container {
     display: flex;
     max-width: 80%;
     margin: auto;
-  }
-  
-  .main-column {
+}
+
+.main-column {
     width: 80%;
     background: red;
-  }
-  
-  .sidebar {
+}
+
+.sidebar {
     width: 20%;
     background: blue;
     height: 300px;
-  }
-  
+}
+
+.feedHeader {
+    align-items: center;
+    display: flex;
+    margin-bottom: 35px;
+    padding: 0;
+}
+
+.catFeed {
+    position: relative;
+    z-index: 1;
+    order: 5;
+}
+
+.dogFeed {
+    position: relative;
+    z-index: 2;
+    order: 6;
+}
+
+.feedContainer {
+    padding: 3px 4px 1px 4px;
+    border: hsl(0, 0%, 54%) solid 4px;
+    height: 108px;
+    background-image: linear-gradient(30deg, rgb(205, 221, 233), hsl(0, 0%, 77%));
+    border-radius: 10%;
+}
+
+.feedContainer img {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    display: block;
+    border: hsl(223, 76%, 50%) solid 2px;
+    box-shadow: 1px 2px 2px 1px rgb(57, 56, 56);
+    border-radius: 10%;
+}
+
+.champion {
+    background-image: linear-gradient(30deg, rgb(254, 237, 145), hsl(51, 65%, 63%));
+    z-index: 99;
+    box-shadow: 5px 0px 5px 1px rgb(42, 41, 41);
+    border: solid 4px hsl(51, 70%, 46%);
+    order: 4;
+    left: 55px;
+}
+
+.champion img {
+    border: solid 2px hsl(5, 95%, 44%);
+}
+
+#trophy {
+    width: 40px;
+    height: 40px;
+    border: none;
+    box-shadow: none;
+}
+
+.runnerUp:hover {
+    z-index: 100;
+    box-shadow: -5px 0px 5px 1px rgb(42, 41, 41);
+}
+
+.winner {
+    text-align: center;
+}
+
+.winner span {
+    color: hsl(51, 65%, 63%);
+}
