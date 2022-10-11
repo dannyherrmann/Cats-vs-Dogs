@@ -6,6 +6,7 @@ const mainContainer = document.querySelector("#container")
 
 const render = async () => {
     const user = parseInt(localStorage.getItem("cd_user"))
+    const username = localStorage.getItem("Username")
     await fetchUsers();
     if (user) {
         await fetchCatAPI();

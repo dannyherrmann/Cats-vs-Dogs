@@ -16,6 +16,7 @@ document.addEventListener("click", clickEvent => {
 
         if (foundUser !== null) {
             localStorage.setItem("cd_user", foundUser.id)
+            localStorage.setItem("Username", foundUser.name)
             document.querySelector("#container").dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
