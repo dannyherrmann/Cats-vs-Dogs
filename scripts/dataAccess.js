@@ -2,7 +2,8 @@ const applicationState = {
     cats: [],
     dogs: [],
     catVote: 0,
-    dogVote: 0
+    dogVote: 0,
+    users: []
 };
 
 const catAPI = "https://api.thecatapi.com/v1/images/search"
@@ -57,15 +58,12 @@ export const addVote = async (vote) => {
     return jsonData
 }
 
-export const addDogVote = async (vote) => {
+export const fetchUsers = async () => {
+    const dataFetch = await fetch(`${mockDB}/users/`)
+    const jsonData = await dataFetch.json()
+    applicationState.users = jsonData
+}
 
-    const fetchMethod = {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(vote)
-    }
-
-    const dataFetch = await fetch(`${mockDB}/dogs/1/votes`, fetchMethod)
-    const jsonData = dataFetch.json()
-    return jsonData
+export const getUsers = () => {
+    return applicationState.users.map((x) => ({ ...x }))
 }
