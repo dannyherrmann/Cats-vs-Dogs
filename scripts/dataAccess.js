@@ -4,7 +4,8 @@ const applicationState = {
     catVote: 0,
     dogVote: 0,
     dogObj: [],
-    catObj: []
+    catObj: [],
+    users: []
 };
 
 const catAPI = "https://api.thecatapi.com/v1/images/search"
@@ -72,7 +73,7 @@ export const addVote = async (vote) => {
     }
 
     const dataFetch = await fetch(`${mockDB}/tally/1`, fetchMethod)
-    const jsonData = dataFetch.json()
+    const jsonData = await dataFetch.json()
     return jsonData
 }
 
@@ -84,26 +85,24 @@ export const addObj = async (obj, type) => {
     }
     if (type === "dog") {
         const dataFetch = await fetch(`${mockDB}/dogObj`, fetchMethod)
-        const jsonData = dataFetch.json()
+        const jsonData = await dataFetch.json()
         return jsonData
 
     } else if (type === "cat") {
         const dataFetch = await fetch(`${mockDB}/catObj`, fetchMethod)
-        const jsonData = dataFetch.json()
+        const jsonData = await dataFetch.json()
         return jsonData
     }
 
 }
 
-export const addDogVote = async (vote) => {
+// export const addDogVote = async (vote) => { }
+export const fetchUsers = async () => {
+    const dataFetch = await fetch(`${mockDB}/users/`)
+    const jsonData = await dataFetch.json()
+    applicationState.users = jsonData
+}
 
-    const fetchMethod = {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(vote)
-    }
-
-    const dataFetch = await fetch(`${mockDB}/dogs/1/votes`, fetchMethod)
-    const jsonData = dataFetch.json()
-    return jsonData
+export const getUsers = () => {
+    return applicationState.users.map((x) => ({ ...x }))
 }

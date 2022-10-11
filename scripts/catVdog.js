@@ -36,42 +36,35 @@ export const catDog = () => {
     `
 }
 
+const allTheFunctions = async (dogObj, catObj, newVoteValue) => {
+    await addObj(dogObj, "dog")
+    await addObj(catObj, "cat")
+    await addVote(newVoteValue)
+    document.querySelector("#container").dispatchEvent(new CustomEvent("stateChanged"))
+}
+
 const mainContainer = document.querySelector("#container")
 
 mainContainer.addEventListener("click", click => {
 
 
-    if (click.target.id === "dogButton") {
-        let dog = getDogVote() + 1
-        const newDogVoteValue = { dogVote: dog, }
+    console.log(click.target.id)
+    if (click.target.id === "dogButton" || click.target.id === "catButton") {
+        let dog = getDogVote()
+        let cat = getCatVote()
+        const voteValue = click.target.id === "dogButton" ? { dogVote: dog + 1 } : { catVote: cat + 1 }
         const dogObj = {
             url: getDogs()[0].url,
-            champion: true
+            // champion: true
+            champion: click.target.id === "dogButton" ? true : false
         }
         const catObj = {
             url: getCats()[0].url,
-            champion: false
+            // champion: false
+            champion: click.target.id === "catButton" ? true : false
         }
-        addObj(dogObj, "dog")
-        addObj(catObj, "cat")
-        addVote(newDogVoteValue)
+
+        allTheFunctions(dogObj, catObj, voteValue)
+
     }
-    else if (click.target.id === "catButton") {
-        let cat = getCatVote() + 1
-        const newCatVoteValue = { catVote: cat }
-        const dogObj = {
-            url: getDogs()[0].url,
-            champion: false
-        }
-        const catObj = {
-            url: getCats()[0].url,
-            champion: true
-        }
-        addObj(dogObj, "dog")
-        addObj(catObj, "cat")
-        addVote(newCatVoteValue)
-    } else {
-        return false
-    }
-    document.dispatchEvent(new CustomEvent("stateChanged"))
 })
