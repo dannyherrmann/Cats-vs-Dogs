@@ -31,6 +31,7 @@ body{
     }
   
   .feed {
+    
   
   }
   
@@ -75,8 +76,15 @@ body{
   }
   
   .sidebar {
-    width: 20%;
-    background: blue;
+    display: flex;
+    width: 400px;
+    background: blue;    
     height: 300px;
+    position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  /* background-color: yellow; */
+  padding: 50px;
+  font-size: 20px;
   }
   
