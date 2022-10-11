@@ -8,7 +8,7 @@ export const catDog = () => {
     <div class="container">
         <div class="main-column">
             <h1>CATS VS DOGS</h1>
-            <img src="https://media.tenor.com/6ipQfTN9jYwAAAAC/cat-dog-cartoon.gif" alt="">
+            <img src="https://media.tenor.com/6ipQfTN9jYwAAAAC/cat-dog-cartoon.gif" alt="" id="catDogGif"> 
             <h2>Choose wisely...</h2>
             
             <section class="animals">
@@ -31,8 +31,16 @@ export const catDog = () => {
                 </div>
             </section>
         </div>
-        <div class="sidebar"></div>
-    </div>
+        <div class="sidebar">
+        <div class="dogVote">
+        <p><u><b> Dog Votes</b></u></p>
+        <i>${getDogVote()}</i>
+       </div>
+       <div class="catVote">
+       <p><u><b> Cat Votes</b></u></p>
+       <i>${getCatVote()}</i>
+       </div>
+        </div>
     `
 }
 
