@@ -5,8 +5,9 @@ import { LoginForm } from "./login.js";
 const mainContainer = document.querySelector("#container")
 
 const render = async () => {
-    const user = parseInt(localStorage.getItem("cd_user"))
-    const username = localStorage.getItem("Username")
+    const user = parseInt(sessionStorage.getItem("cd_user"))
+    const username = sessionStorage.getItem("Username")
+    console.log(`username:`,username)
     await fetchUsers();
     if (user) {
         await fetchCatAPI();
