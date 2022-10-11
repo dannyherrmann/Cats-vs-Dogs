@@ -1,6 +1,7 @@
 // function for html to display on main that has images and buttons
 
-import { getCats, getDogs, getCatVote, getDogVote, addVote } from "./dataAccess.js"
+import { getCats, getDogs, getCatVote, getDogVote, addVote, addObj, getCatObj, getDogObj } from "./dataAccess.js"
+import { feed } from "./feed.js"
 
 export const catDog = () => {
     return `
@@ -24,40 +25,54 @@ export const catDog = () => {
 
             <section class="feed">
                 <h2>Winners</h2>
-                <div class="results">
-                    <img src="https://cdn2.thedogapi.com/images/Sk67KO2rX_1280.jpg" />
-                    <img src="https://cdn2.thedogapi.com/images/Sk67KO2rX_1280.jpg" />
-                    <img src="https://cdn2.thedogapi.com/images/Sk67KO2rX_1280.jpg" />
-                    <img src="https://cdn2.thedogapi.com/images/Sk67KO2rX_1280.jpg" />
-                    <img src="https://cdn2.thedogapi.com/images/Sk67KO2rX_1280.jpg" />
-                    <img src="https://cdn2.thedogapi.com/images/Sk67KO2rX_1280.jpg" />
+                <div id ="feed" class="results">
+                ${feed(getCatObj(), getDogObj())}
+                    
                 </div>
             </section>
         </div>
         <div class="sidebar">
-        <p><b> Dog Votes</b></p>
-       <ul>${getDogVote()}</ul>
-        <p><b> Cat Votes</b></p>
-        <br></br>
-        <ul>${getCatVote()}
+        <div class="dogVote">
+        <p><u><b> Dog Votes</b></u></p>
+        <i>${getDogVote()}</i>
+       </div>
+       <div class="catVote">
+       <p><u><b> Cat Votes</b></u></p>
+       <i>${getCatVote()}</i>
+       </div>
         </div>
     `
+}
+
+const allTheFunctions = async (dogObj, catObj, newVoteValue) => {
+    await addObj(dogObj, "dog")
+    await addObj(catObj, "cat")
+    await addVote(newVoteValue)
+    document.querySelector("#container").dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 const mainContainer = document.querySelector("#container")
 
 mainContainer.addEventListener("click", click => {
-    if (click.target.id === "dogButton") {
-        let dog = getDogVote() + 1
-        const newDogVoteValue = { dogVote: dog }
-        addVote(newDogVoteValue)
+
+
+    console.log(click.target.id)
+    if (click.target.id === "dogButton" || click.target.id === "catButton") {
+        let dog = getDogVote()
+        let cat = getCatVote()
+        const voteValue = click.target.id === "dogButton" ? { dogVote: dog + 1 } : { catVote: cat + 1 }
+        const dogObj = {
+            url: getDogs()[0].url,
+            // champion: true
+            champion: click.target.id === "dogButton" ? true : false
+        }
+        const catObj = {
+            url: getCats()[0].url,
+            // champion: false
+            champion: click.target.id === "catButton" ? true : false
+        }
+
+        allTheFunctions(dogObj, catObj, voteValue)
+
     }
-    else if (click.target.id === "catButton") {
-        let cat = getCatVote() + 1
-        const newCatVoteValue = { catVote: cat }
-        addVote(newCatVoteValue)
-    } else {
-        return false
-    }
-    document.dispatchEvent(new CustomEvent("stateChanged"))
 })
