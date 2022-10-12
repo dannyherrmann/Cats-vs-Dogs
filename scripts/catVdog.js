@@ -5,6 +5,17 @@ import { feed } from "./feed.js"
 
 export const catDog = () => {
     return `
+   
+    <div class="sidebar">
+    <div class="dogVote">
+    <p><u><b> Dog Votes</b></u></p>
+    <i>${getDogVote()}</i>
+   </div>
+   <div class="catVote">
+   <p><u><b> Cat Votes</b></u></p>
+   <i>${getCatVote()}</i>
+   </div>
+    </div>
     <div class="container">
         <div class="main-column">
             <h1>CATS VS DOGS</h1>
@@ -30,16 +41,6 @@ export const catDog = () => {
                     
                 </div>
             </section>
-        </div>
-        <div class="sidebar">
-        <div class="dogVote">
-        <p><u><b> Dog Votes</b></u></p>
-        <i>${getDogVote()}</i>
-       </div>
-       <div class="catVote">
-       <p><u><b> Cat Votes</b></u></p>
-       <i>${getCatVote()}</i>
-       </div>
         </div>
     `
 }
