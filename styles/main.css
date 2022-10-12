@@ -80,24 +80,28 @@ h2 {
 
 .container {
     display: flex;
-    max-width: 80%;
+    /* max-width: 80%; */ */
     margin: auto;
 }
 
 .main-column {
-    width: 80%;
+    display: block;
+     width: 80%;
+     margin-left: 250px ;
     background: #3b3a30;
   }
   
   .sidebar {
     display: flex;
-    /* width: 100px; */
+    float: right;
+    right: 53px;
+    width: auto;
     background: #50394c;    
     height: 150px;
     position: -webkit-sticky;
   position: sticky;
   top: 0;
-  /* background-color: yellow; */
+ 
   padding: 30px;
   font-size: 20px;
   }
