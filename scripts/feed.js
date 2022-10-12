@@ -1,13 +1,14 @@
 import { getCatObj, getDogObj } from "./dataAccess.js";
 
 
-export const feed = (array1, array2) => {
+export const feed = (catArray, dogArray) => {
+    // const username = sessionStorage.getItem("Username")
     let html = `
     <div class="mainFeed">
     <button id="sortByDate">Sort</button>
     `
 
-    for (const cat of array1) {
+    for (const cat of catArray) {
         html += `
             <div class="contestants">
                 <div class="feedHeader">
@@ -19,13 +20,18 @@ export const feed = (array1, array2) => {
                     <a href="${cat.url}" target="_blank"><img src="${cat.url}" alt=""></a>${championImg(cat)}
                     </div>`
 
-        for (const dog of array2) {
+        for (const dog of dogArray) {
             if (cat.id === dog.id) {
                 html += `
                     <div class="feedContainer ${champion(dog)} dogFeed">
                     <a href="${dog.url}" target="_blank"><img src="${dog.url}" alt=""></a>${championImg(dog)}
                     </div>
-                </div>`
+                 <div class="votedBy">
+                    <h3>Voted By: ${dog.votee}</h3>
+                    <h4>Date Voted: ${dog.date}</h4>
+                    </div>   
+                </div>
+                `
             }
         }
     }

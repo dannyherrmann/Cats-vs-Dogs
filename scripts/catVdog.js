@@ -58,17 +58,20 @@ mainContainer.addEventListener("click", click => {
 
     console.log(click.target.id)
     if (click.target.id === "dogButton" || click.target.id === "catButton") {
+        let date = new Date
         let dog = getDogVote()
         let cat = getCatVote()
         const voteValue = click.target.id === "dogButton" ? { dogVote: dog + 1 } : { catVote: cat + 1 }
         const dogObj = {
             url: getDogs()[0].url,
-            // champion: true
+            votee: sessionStorage.getItem("Username"),
+            date: date.toLocaleDateString("en-US"),
             champion: click.target.id === "dogButton" ? true : false
         }
         const catObj = {
             url: getCats()[0].url,
-            // champion: false
+            votee: sessionStorage.getItem("Username"),
+            date: date.toLocaleDateString("en-US"),
             champion: click.target.id === "catButton" ? true : false
         }
 
